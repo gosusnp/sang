@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<meta>
+<title>Simple Animations for NG</title>
+</meta>
+<body ng-app="SANG">
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Fade</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-fade" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-fade" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-fade" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-fade" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Uncover Horizontal</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-uncover-horizontal" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-uncover-horizontal" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-uncover-horizontal" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-uncover-horizontal" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Uncover Vertical</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-uncover-vertical" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-uncover-vertical" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-uncover-vertical" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-uncover-vertical" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Slide Bottom</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-slide-bottom" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-slide-bottom" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-slide-bottom" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-slide-bottom" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Slide Top</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-slide-top" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-slide-top" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-slide-top" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-slide-top" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Slide Left</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-slide-left" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-slide-left" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-slide-left" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-slide-left" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-controller="DemoCtrl">
+        <hr />
+        <h1>Slide Right</h1>
+        <div>
+            <button ng-click="activate()">activate</button>
+            <button ng-click="deactivate()">deactivate</button>
+        </div>
+        <div>
+            <h3 class="sg-slide-right" ng-if="show">Animation with ng-if</h3>
+            <h3 class="sg-slide-right" ng-show="show">Animation with ng-show</h3>
+            <h3 class="sg-slide-right" ng-hide="!show">Animation with ng-hide</h3>
+            <ul>
+                <li class="sg-slide-right" ng-repeat="item in items" ng-bind="item"></li>
+            </ul>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/angular.min.js"></script>
+<script src="/lib/angular-animate.min.js"></script>
+<script src="/src/sang.js"></script>
+<!--script src="/dist/sang.min.js"></script-->
+
+<script type="text/javascript">
+angular.module('SANG', ['sang'])
+.controller('DemoCtrl', function($scope, $timeout) {
+    $scope.activate = function() {
+        $scope.show = true;
+        $timeout(function() {
+            $scope.items = ['item1', 'item2', 'item3'];
+            $timeout(function() {
+                $scope.items.splice(1, 0, 'item4');
+                $scope.items.push('item5');
+            }, 1000);
+        }, 1000);
+    };
+    $scope.deactivate = function() {
+        $scope.show = false;
+        if ($scope.items) {
+            $timeout(function() {
+                $scope.items.splice(2, 1);
+                $scope.items.pop();
+                $timeout(function() {
+                    $scope.items = [];
+                }, 1000);
+            }, 1000);
+        }
+    };
+})
+;
+</script>
+</body>
+</html>
